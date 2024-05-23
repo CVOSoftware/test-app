@@ -1,0 +1,45 @@
+version: '3.4'
+
+services:
+  testapp.host:
+    image: testapp.host
+    container_name: testapp.host
+    depends_on:
+     - testapp.postgres
+    restart: always
+    build:
+      context: .
+      dockerfile: ../TestApp.Host/Dockerfile
+  
+  testapp.pgadmin:
+    image: dpage/pgadmin4
+    container_name: testapp.pgadmin
+    depends_on:
+     - testapp.postgres
+    restart: always
+    ports:
+      - 18080:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: developer@dev.com
+      PGADMIN_DEFAULT_PASSWORD: 1111
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+
+  testapp.postgres:
+    image: postgres:15.4
+    container_name: testapp.postgres
+    restart: always
+    expose:
+      - 5432
+    environment:
+      POSTGRES_USER: developer
+      POSTGRES_PASSWORD: 1111
+      PGDATA: /data/postgres
+    volumes:
+      - postgres-data:/data/postgres
+
+volumes:
+  pgadmin-data:
+    driver: local
+  postgres-data:
+    driver: local

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Development": {
+      "commandName": "Project",
+      "commandLineArgs": "init --host=https://127.0.0.1:18443 --count=100"
+    }
+  }
+}

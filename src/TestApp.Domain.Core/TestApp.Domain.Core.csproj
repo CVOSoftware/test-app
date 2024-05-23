@@ -1,0 +1,6 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\TestApp.Data\TestApp.Data.csproj" />
+    <ProjectReference Include="..\TestApp.Domain.Abstraction\TestApp.Domain.Abstraction.csproj" />
+  </ItemGroup>
+</Project>
